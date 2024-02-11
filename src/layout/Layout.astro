@@ -1,0 +1,72 @@
+---
+import "@fontsource-variable/lexend";
+
+const { title } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Una emisora ubicada en Republica Dominicana que lleva su palabra a todas partes."
+    />
+    <meta name="keywords" content="Radio,Estilo,Dios,Palabra,Gloria" />
+    <meta name="author" content="Cristian Jean" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f30" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.alestilodedios.com/" />
+    <meta property="og:title" content="Radio Al Estilo de Dios" />
+    <meta
+      property="og:description"
+      content="Una emisora ubicada en Republica Dominicana que lleva su palabra a todas partes."
+    />
+    <meta
+      property="og:image"
+      content="https://lh5.googleusercontent.com/D6hCt58NDixpFLBZInS_mlGzvbg-nBeLl1q-7GopIhSE4di6CZYA64CYxdSWvlhj3K-h9s2Iy1ypClmgMaUXCrs=w16383"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.alestilodedios.com/" />
+    <meta name="twitter:title" content="Radio Al Estilo De Dios" />
+    <meta
+      name="twitter:description"
+      content="Una emisora ubicada en Republica Dominicana que lleva su palabra a todas partes."
+    />
+    <meta
+      name="twitter:image"
+      content="https://lh5.googleusercontent.com/D6hCt58NDixpFLBZInS_mlGzvbg-nBeLl1q-7GopIhSE4di6CZYA64CYxdSWvlhj3K-h9s2Iy1ypClmgMaUXCrs=w16383"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <title>{title}</title>
+  </head>
+  <body class="relative h-full min-h-screen w-full bg-black">
+    <slot />
+    <div
+      id="bg-points"
+      class="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]"
+    >
+    </div>
+    <div
+      id="bg-overlay"
+      class="hidden z-[-2] absolute inset-0 bg-black opacity-50"
+    >
+    </div>
+  </body>
+
+  <style is:global>
+    body {
+      font-family: "Lexend Variable", sans-serif;
+    }
+  </style>
+</html>

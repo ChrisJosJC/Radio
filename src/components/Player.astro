@@ -1,0 +1,77 @@
+---
+import Play from "@comp/PlayBtn";
+---
+
+<main class="grid place-items-center mt-20">
+  <Play
+    client:load
+    id="playButton"
+    class="dark:text-red-600 animate-tada animate-fill-mode-backwards cursor-pointer hover:animate-pop hover:animate-iteration-count-infinite"
+  />
+  <h2 class="text-white mt-3 text-5xl text-center" id="currentTrack"></h2>
+  <h3 class="mt-2 text-white/70 font-light" id="currentArtist"></h3>
+</main>
+
+<script>
+  let audio = new Audio(
+    "https://c11.radioboss.fm:8314/stream"
+  ) as HTMLAudioElement;
+  audio = document.querySelector("main").appendChild(audio);
+  audio.setAttribute("id", "player");
+  audio.crossOrigin = "anonymous";
+  let playButton = document.querySelector("#playButton");
+
+  playButton.addEventListener("click", (e) => {
+    if (audio.paused) audio.play();
+    else audio.pause();
+  });
+</script>
+
+<script>
+  import { Wave } from "@foobar404/wave";
+  setTimeout(() => {
+    let audioElement = document.querySelector("#player") as HTMLAudioElement;
+    let canvasElement = document.querySelector("#waves") as HTMLCanvasElement;
+
+    let wave = new Wave(audioElement, canvasElement);
+
+    wave.addAnimation(
+      new wave.animations.Lines({
+        lineColor: "#fff",
+      })
+    );
+  }, 1000);
+</script>
+
+<script is:inline>
+  var artist = document.getElementById("currentArtist"),
+    title = document.getElementById("currentTrack"),
+    cover,
+    url = "https://c11.radioboss.fm/w/nowplayinginfo?u=314",
+    cover_url = "https://c11.radioboss.fm/w/artwork/314.jpg",
+    type = 0;
+
+  function updateInfo() {
+    fetch(url + "&_=" + new Date().getTime())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      })
+      .then((data) => {
+        artist.textContent = data.currenttrack_artist;
+
+        title.textContent = data.currenttrack_title;
+
+        cover = cover_url + "?" + new Date().getTime();
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+  }
+
+  updateInfo();
+  setInterval(updateInfo, 5000);
+</script>

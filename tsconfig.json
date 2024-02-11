@@ -1,3 +1,22 @@
 {
-  "extends": "astro/tsconfigs/base"
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "baseUrl": "C:/Users/PC/Dev/radio",
+    "paths": {
+      "@layouts/*": [
+        "src/layout/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@comp/*": [
+        "src/components/*"
+      ],
+      "@icons/*": [
+        "src/icons/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  }
 }
