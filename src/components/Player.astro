@@ -8,7 +8,11 @@ import Play from "@comp/PlayBtn";
     id="playButton"
     class="dark:text-red-600 animate-tada animate-fill-mode-backwards cursor-pointer hover:animate-pop hover:animate-iteration-count-infinite"
   />
-  <h2 class="text-white mt-3 text-5xl text-center" id="currentTrack"></h2>
+  <h2
+    class="text-white mt-3 text-5xl max-sm:text-3xl text-center px-3 box-border"
+    id="currentTrack"
+  >
+  </h2>
   <h3 class="mt-2 text-white/70 font-light" id="currentArtist"></h3>
 </main>
 
@@ -18,12 +22,11 @@ import Play from "@comp/PlayBtn";
   ) as HTMLAudioElement;
   audio = document.querySelector("main").appendChild(audio);
   audio.setAttribute("id", "player");
+  audio.preload = "none";
   audio.crossOrigin = "anonymous";
   let playButton = document.querySelector("#playButton");
-
   playButton.addEventListener("click", (e) => {
     if (audio.paused) audio.play();
-    else audio.pause();
   });
 </script>
 
@@ -48,8 +51,7 @@ import Play from "@comp/PlayBtn";
     title = document.getElementById("currentTrack"),
     cover,
     url = "https://c11.radioboss.fm/w/nowplayinginfo?u=314",
-    cover_url = "https://c11.radioboss.fm/w/artwork/314.jpg",
-    type = 0;
+    cover_url = "https://c11.radioboss.fm/w/artwork/314.jpg";
 
   function updateInfo() {
     fetch(url + "&_=" + new Date().getTime())
@@ -61,11 +63,14 @@ import Play from "@comp/PlayBtn";
         }
       })
       .then((data) => {
-        artist.textContent = data.currenttrack_artist;
+        if (title.textContent != data.currenttrack_title) {
+          artist.textContent = data.currenttrack_artist;
 
-        title.textContent = data.currenttrack_title;
+          title.textContent = data.currenttrack_title;
 
-        cover = cover_url + "?" + new Date().getTime();
+          cover = cover_url + "?" + new Date().getTime();
+          document.body.style.backgroundImage = `url('${cover}')`;
+        }
       })
       .catch((error) => {
         console.error("Fetch error:", error);

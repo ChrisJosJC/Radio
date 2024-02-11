@@ -7,8 +7,8 @@ export default function ({ ...Props }) {
   const [paused, setPaused] = useState(false)
 
   const togglePlay = (e) => {
-    if (!paused) document.querySelector("#player").play();
-    if (paused) document.querySelector("#player").pause();
+    if (!paused) document.querySelector("#player").muted = false;
+    if (paused) document.querySelector("#player").muted = true;
     setPaused(!paused)
   }
 

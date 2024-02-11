@@ -3,7 +3,10 @@ import Adjust from "@icons/Adjust.astro";
 ---
 
 <header class="flex py-4 px-6 justify-between items-center w-full">
-  <span class="block text-white font-medium">Radio Estilo de Dios</span>
+  <div class="flex gap-2 items-center rounded-full bg-white px-3">
+    <img src="/favicon.png" alt="Logo de Radio Estilo de Dios" class="size-8" />
+    <span class="block font-medium">Radio Estilo de Dios</span>
+  </div>
   <Adjust
     id="change-bg"
     class="dark:text-white hover:animate-rotate-180 hover:opacity-90 cursor-pointer"
@@ -15,12 +18,6 @@ import Adjust from "@icons/Adjust.astro";
   let bgSet;
 
   document.querySelector("#change-bg").addEventListener("click", () => {
-    if (bgSet != title) {
-      document.body.style.backgroundImage = `url('${this.cover}')`;
-      document.body.style.backgroundSize = "cover";
-      document.body.style.backgroundRepeat = "no-repeat";
-      bgSet = title;
-    }
     document.getElementById("bg-points").classList.toggle("hidden");
     document.getElementById("bg-overlay").classList.toggle("hidden");
     document.getElementById("change-bg").classList.toggle("rotate-180");
