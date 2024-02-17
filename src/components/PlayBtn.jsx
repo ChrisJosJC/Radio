@@ -7,8 +7,12 @@ export default function ({ ...Props }) {
   const [paused, setPaused] = useState(false)
 
   const togglePlay = (e) => {
-    if (!paused) document.querySelector("#player").muted = false;
+    if (!paused) {
+      document.querySelector("#player").muted = false;
+    }
     if (paused) document.querySelector("#player").muted = true;
+    document.querySelector("footer").classList.toggle("opacity-0")
+
     setPaused(!paused)
   }
 
