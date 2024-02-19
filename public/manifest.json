@@ -34,6 +34,17 @@
             "type": "image/png",
             "form_factor": "wide",
             "sizes": "1366x599"
+        },
+        {
+            "src": "/screenshot3.png",
+            "type": "image/png",
+            "form_factor": "wide",
+            "sizes": "1366x599"
+        },
+        {
+            "src": "/screenshot4.png",
+            "type": "image/png",
+            "sizes": "320x580"
         }
     ]
 }
