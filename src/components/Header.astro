@@ -13,17 +13,15 @@ import Adjust from "@icons/Adjust.astro";
   </div>
   <Adjust
     id="change-bg"
-    class="text-white hover:animate-rotate-180 hover:opacity-90 cursor-pointer"
+    class="text-white hover:opacity-90 cursor-pointer"
     title="Change background"
   />
 </header>
 
 <script is:inline>
-  let bgSet;
-
   document.querySelector("#change-bg").addEventListener("click", () => {
     document.getElementById("bg-points").classList.toggle("opacity-0");
-    document.getElementById("bg-overlay").classList.toggle("opacity-0 hidden");
+    document.getElementById("bg-overlay").classList.toggle("opacity-50");
     document.getElementById("change-bg").classList.toggle("rotate-180");
   });
 </script>
